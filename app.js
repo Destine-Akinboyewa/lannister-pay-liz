@@ -5,8 +5,9 @@ let cookieParser  = require('cookie-parser');
 let logger  = require ('morgan');
 let dbConnection = require("./src/connection/dbConnect")
 
-var schoolRoute = require('./routes/schoolRoute');
+// var schoolRoute = require('./routes/schoolRoute');
 var lannisterRoute = require('./routes/lannisterPayRoute');
+var test = require('./routes/test');
 
 var app = express();
 
@@ -23,8 +24,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/school', schoolRoute);
-app.use('/', lannisterRoute);
+app.use('/epay', lannisterRoute);
+app.use('/', test);
+
 
 
 // catch 404 and forward to error handler

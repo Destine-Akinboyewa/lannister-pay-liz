@@ -3,39 +3,43 @@ var router = express.Router();
 var lannisterPaySchema = require("../src/model/lannisterPayModel");
 
 
-router.get('/',(req,res, next)=>{
-  res.status(200).send({msg:'Hi destiny'})
-})
+// router.get('/',(req,res, next)=>{
+//   res.status(200).send({msg:'Hi destiny'})
+// })
 
-router.post('/epay', async (req,res, next)=>{
-  
+router.get('/', async function (req, res, next) {
+
 
   const SplitInfo = [{
-    
-        SplitType:"FLAT",
-  
-    SplitValue:"fd",
-    SplitEntityId:""
-}
-]
+
+    SplitType: "FLAT",
+    SplitValue: "450",
+    SplitEntityId: "LNPYACC0019"
+  }
+  ]
 
   const dataSource = {
-    Id:32,
-    amount:4000,
-    currency:"NGN",
-    customerEmail:"destine@gmail.com",
-    SplitInfo:SplitInfo
-    
+    ID: "32",
+    Amount: "4000",
+    currency: "NGN",
+    CustomerEmail: "destine@gmail.com",
+    SplitInfo: SplitInfo
+
   }
 
-  lannisterPaySchema.create(
-    dataSource
-  )
+  const lannister = await new  lannisterPaySchema(dataSource);
 
- res.status(200).send({msg:"Hi Destiny pay"});
-    
+  lannister.save(function(err,result){
+    if(err) {return err}else{
+      console.log(result)
+    }
+
+  });
+
+//  return  res.status(200).send("Hi Destiny pay" );
+
 })
 
 
 
-module.exports = router;
+module.exports = router ;
