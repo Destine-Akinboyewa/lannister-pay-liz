@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var lannisterPaySchema = require("../src/model/lannisterPayModel");
+var lannisterPaySchema = require("../src/model/lanPayModel");
 
 
 
@@ -8,7 +8,7 @@ var lannisterPaySchema = require("../src/model/lannisterPayModel");
 router.get('/',  function (req, res, next) {
 
 
- return  res.status(200).send("Hi Destiny pay" );
+ return  res.status(200).send("Hi Lannister Pay" );
 
 })
 

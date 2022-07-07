@@ -1,28 +1,24 @@
 var express = require('express');
 var router = express.Router();
-var lannisterPaySchema = require("../src/model/lannisterPayModel");
+var lannisterPaySchema = require("../src/model/lanPayModel");
 
-
-// router.get('/',(req,res, next)=>{
-//   res.status(200).send({msg:'Hi destiny'})
-// })
 
 router.get('/', async function (req, res, next) {
 
 
   const SplitInfo = [{
 
-    SplitType: "FLAT",
-    SplitValue: "450",
-    SplitEntityId: "LNPYACC0019"
+    SplitType: "PERCENTAGE",
+    SplitValue: "3",
+    SplitEntityId: "LNPYACC0015"
   }
   ]
 
   const dataSource = {
-    ID: "32",
-    Amount: "4000",
+    ID: "1308",
+    Amount: "5000",
     currency: "NGN",
-    CustomerEmail: "destine@gmail.com",
+    CustomerEmail: "elizabeth@gmail.com",
     SplitInfo: SplitInfo
 
   }
@@ -35,8 +31,6 @@ router.get('/', async function (req, res, next) {
     }
 
   });
-
-//  return  res.status(200).send("Hi Destiny pay" );
 
 })
 
